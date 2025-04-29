@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+
+<canvas id=canvas_main></canvas>
+
+<script type="module">
+import { rnd } from "https://js.sabae.cc/rnd.js";
+import { waitImageLoad } from "https://js.sabae.cc/waitImageLoad.js";
+
+const loadImage = async (path) => {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.src = path;
+    img.onload = () => resolve(img);
+  });
+};
+
+const img = await loadImage("mapchip2/MapChip/kusa1.png");
+const imgbase = await loadImage("mapchip2/MapChip/tuti1.png");
+
+const sw = 240;
+const sh = sw;
+canvas_main.width = sw;
+canvas_main.height = sh;
+canvas_main.style.width = "90vw";
+canvas_main.style.height = "90vw";
+canvas_main.style.imageRendering = "pixelated";
+
+const g = canvas_main.getContext("2d");
+g.imageSmoothingEnabled = false;
+
+const cwb = 16;
+for (let y = 0; y < sh; y += cwb) {
+  for (let x = 0; x < sw; x += cwb) {
+    const n = 4;
+    g.drawImage(imgbase, 0, n * cwb, cwb, cwb, x, y, cwb, cwb);
+  }
+}
+
+const cw = 8;
+for (let y = 0; y < sh; y += cw) {
+  for (let x = 0; x < sw; x += cw) {
+    const n = rnd(5 * 4);
+    g.drawImage(img, n % 2 * 8, Math.floor(n / 2) * 8, cw, cw, x, y, cw, cw);
+  }
+}
+
+</script>
+
+<style>
+body {
+  background-color: #333;
+}
+</style>
