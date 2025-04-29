@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+
+<canvas id=canvas_main></canvas>
+
+<script type="module">
+import { BG } from "./BG.js";
+import { Lifegame } from "./Lifegame.js";
+
+const nw = 16;
+const nh = nw;
+const lifegame = new Lifegame(nw, nh);
+const bg = await BG.create(canvas_main, nw, nh);
+
+setInterval(() => {
+  bg.setMapInt(lifegame.getMap());
+  bg.draw();
+  lifegame.tick();
+}, 200);
+
+</script>
+
+<style>
+body {
+  background-color: #333;
+  margin: 0;
+}
+</style>
+</body></html>

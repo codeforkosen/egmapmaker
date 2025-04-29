@@ -1,6 +1,11 @@
 # egmapmaker
 
-https://code4fukui.github.io/egmapmaker/
+- https://code4fukui.github.io/egmapmaker/
+
+## under construction
+
+- [2種類でランダム配置](https://code4fukui.github.io/egmapmaker/random.html)
+- [2種類でライフゲーム](https://code4fukui.github.io/egmapmaker/lifegame.html)
 
 ## resource
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+
+<canvas id=canvas_main></canvas>
+
+<script type="module">
+import { BG } from "./BG.js";
+
+const bg = await BG.create(canvas_main, 32, 32);
+setInterval(() => {
+  bg.draw();
+  if (Math.random() < 0.1) {
+    bg.setMapRandom();
+  }
+}, 500);
+
+</script>
+
+<style>
+body {
+  background-color: #333;
+  margin: 0;
+}
+</style>
